@@ -7,20 +7,28 @@
   </head>
   <body ng-controller="MainCtrl">
 
+  <div class="form">
+    <div>
+      <input class="quoteInput" type="text" placeholder="Add new quote!" ng-model='newQuoteText'>
+    </div>
+    <div>
+      <input class="quoteInput" type="text" placeholder="Quotes author!" ng-model='newQuoteAuthor'>
+      <button class="addQuote" ng-click="addQuote()">+</button>
+    </div>
 
-    <input type="text" placeholder="Add new quote!" ng-model='newQuoteText'>
-     <input type="text" placeholder="Quotes author!" ng-model='newQuoteAuthor'>
-     <button ng-click="addQuote()">Add Quote</button>
      <div>
-       Filter: <input type="text" ng-model='filterText'/>
+       <br>
+       <input id="filter" placeholder="Filter quotes" type="text" ng-model='filterText'/>
      </div>
+  </div>
 
-    <p ng-repeat = "quote in quotes | filter: filterText">
-     <span class = 'text'>{{quote.text}}</span>
-     <span class = 'author'> -- {{quote.author}}</span>
-     <button ng-click = "deleteMe(quote.text)">Delete</button>
-    </p>
-
+     <div class="quoteDisplay">
+        <p ng-repeat = "quote in quotes | filter: filterText">
+         <span class='text'>"{{quote.text}}"</span>
+         <span class='author'> -- {{quote.author}}</span>
+         <button id="delete" ng-click = "deleteMe(quote.text)">X</button>
+        </p>
+      </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
   <script src="js/app.js"></script>
